@@ -2,7 +2,20 @@
   [@dialog]
   *ngIf="visiblekah"
   [ngClass]="mclass"
+
 >
-  <ng-content></ng-content>
+
+  <!--<mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+    <h5 class="small ml-3">
+      {{judul}}</h5>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button="" class="pull-right" (click)="close()" matTooltip="close" matTooltipPosition="before">
+      <i class="fa fa-close"></i>
+    </button>
+  </mat-toolbar> -->
+    <ng-content></ng-content>
+
+
+
 
 </div>

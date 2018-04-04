@@ -241,7 +241,6 @@ display: inline;
   height: 100%;
 }
 .dialog-form .dialog-form-body .dialog-form-container {
-  max-width: 450px;
   min-width: 100px;
   min-height: 50px;
   display: flex;
@@ -340,8 +339,9 @@ mat-toolbar > mat-form-field {
   position: inherit !important;
 }
 
+
 .mat-card{
-  max-width: 50%;
+  /*max-width: 50%;*/
   margin: auto;
   margin-top: 35px;
   padding-top: 24px;
@@ -350,6 +350,20 @@ mat-toolbar > mat-form-field {
   padding-bottom: 5px;
   max-height: 100%;
 }
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: visible !important;
+  /* overflow-y: auto; */
+}
+.mat-tab-body.mat-tab-body-active {
+  position: relative;
+  overflow-x: hidden;
+   overflow-y: inherit !important;
+  z-index: 1;
+  flex-grow: 1;
+}
+
 
 @media screen and (max-width: 720px) {
   .cmodal-cari{
@@ -379,10 +393,10 @@ mat-toolbar > mat-form-field {
     height: 32px !important;
   }
 
- 
 
 
-  
+
+
 }
 
 

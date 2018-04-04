@@ -26,6 +26,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ProfileService } from './components/layout/page/profile/services/profile.service';
 import { WebviewDirective } from './directives/webview.directive';
 import { HttpModule } from '@angular/http';
+import {MyCurrencyPipe} from "./core/pipe/my-currency.pipe";
 
 
 
@@ -59,7 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [ElectronService, ProfileService ],
+  providers: [ElectronService, ProfileService ,MyCurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

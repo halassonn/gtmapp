@@ -8,6 +8,7 @@ import {DatakantorService} from './serivces/datakantor.service';
 import {MatPaginator} from '@angular/material';
 import {CoreModule} from '../../../../core/core.module';
 import { MymodalModule } from '../../../../mymodal/mymodal.module';
+import {ModalService} from "../../../../mymodal/services/modal.service";
 
 const routes: Routes = [
   {path : '', component: DatakantorComponent}
@@ -35,7 +36,7 @@ const routes: Routes = [
     CoreModule
   ],
   providers : [
-    DatakantorService, MatPaginator
+    DatakantorService, MatPaginator, ModalService
   ]
 
 })

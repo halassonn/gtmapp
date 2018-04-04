@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges, OnDestroy} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {ModalService} from "./services/modal.service";
 
 @Component({
   selector: 'app-mymodal',
-  templateUrl: './mymodal.component.html',
+  templateUrl:'./mymodal.component.html',
   styleUrls: ['./mymodal.component.scss'],
   animations: [
     trigger('dialog', [
@@ -17,18 +18,32 @@ import {animate, style, transition, trigger} from '@angular/animations';
     ])
   ]
 })
-export class MymodalComponent implements OnInit {
+export class MymodalComponent implements OnChanges{
+
+
+
   @Input() closable = true;
   @Input() visiblekah: boolean;
-  @Input() data:string;
-  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() visibleChangez: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() dataout: EventEmitter<string> = new EventEmitter<string>();
-  @Input() title: string;
   @Input() mclass: string;
+  @Input() judul: string;
+  @Input() conf:any;
+  private bodyclass:string;
+constructor(private modalS: ModalService){
+  this.conf = this.modalS.getConf();
+}
 
-  constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
 
-  ngOnInit() {
+    this.judul=this.modalS.getTitle();
+
   }
+
+  close(){
+    this.visiblekah=false;
+  }
+
+
 
 }

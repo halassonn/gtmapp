@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DataSource } from '@angular/cdk/collections';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ModalService} from "../../../../mymodal/services/modal.service";
 
 @Component({
   selector: 'app-datakantor',
@@ -56,7 +57,8 @@ export class DatakantorComponent implements OnInit {
   constructor(private loaderService: LoaderService,
     private datakantorService: DatakantorService,
     private fb: FormBuilder,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+              private modalservice: ModalService
   ) {
     this.displayedColumns = ['kodekantor', 'namakantor', 'alamat', 'kodepos', 'actions'];
   }
@@ -137,7 +139,7 @@ export class DatakantorComponent implements OnInit {
       )
     }
 
-    /* 
+    /*
      */
   }
 
@@ -164,6 +166,7 @@ export class DatakantorComponent implements OnInit {
     }
     this.disable = true;
     this.buildForm(null);
+    this.modalservice.setTitle(!this.showformadd);
     this.showformadd = !this.showformadd
 
   }
@@ -215,6 +218,8 @@ export class DatakantorComponent implements OnInit {
     } else {
       this.updateData = this.updateData;
     }
+    this.modalservice.setConf('dialog-form',450);
+   this.modalservice.setTitle(!this.showformadd,"judul");
     this.showformadd = !this.showformadd;
   }
   opencari() {
