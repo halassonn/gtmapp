@@ -1,8 +1,8 @@
 import {Injectable, EventEmitter, Output} from '@angular/core';
-import {HttpService} from '../../../../../core/_http/http.service';
 import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {DataGajiModel} from "../../../../../model/datagaji.model";
+import {HttpService} from '../../../../../core/_http/http.service';
 
 
 @Injectable()
@@ -15,7 +15,6 @@ export class DataGajiService {
         return this._http.get('api/all_data_gaji')
             .map((response: Response) => response.json() as DataGajiModel[])
             .catch(this.handleError);
-
     }
 
     private handleError(error: Response | any) {

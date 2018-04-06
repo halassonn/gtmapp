@@ -4,6 +4,8 @@ import {MymoduleModule} from '../../mymodule/mymodule.module';
 import {RouterModule, Routes} from '@angular/router';
 import {LoaderService} from '../../core/_http/loader/loader.service';
 import {LayoutComponent} from './layout.component';
+import {ProfileService} from "./page/profile/services/profile.service";
+import {LayoutService} from "./page/layout.service";
 
 
 
@@ -33,7 +35,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ], providers: [
-    LoaderService
+    LoaderService,ProfileService, LayoutService
   ]
 })
 export class LayoutModule {

@@ -50,36 +50,36 @@
 
                   <div class="form-row">
                     <div class="input-group mb-3 ml-3 mr-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Cari nik">
+                      <input type="number" class="form-control form-control-lg" formControlName="carinik" placeholder="Cari nik">
                       <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="caridatakaryawan(formgajitetap.value.carinik)"><i class="fa fa-search"></i></button>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <label for="nik">Nik</label>
-                      <input type="text" class="form-control form-control-lg mb-1" id="nik"  readonly required>
+                      <input type="text" class="form-control form-control-lg mb-1" id="nik" formControlName="nik"  readonly required>
                       <label for="nama">Nama</label>
-                      <input type="text" class="form-control form-control-lg mb-1" id="nama"  readonly required>
+                      <input type="text" class="form-control form-control-lg mb-1" id="nama"  formControlName="nama" readonly required>
                       <label for="jabatan">Jabatan</label>
-                      <input type="text" class="form-control form-control-lg mb-1" id="jabatan"  readonly required>
+                      <input type="text" class="form-control form-control-lg mb-1" id="jabatan" formControlName="jabatan"  readonly required>
                       <div class="form-row">
                         <div class="col-md-2">
                           <label for="sts">Status</label>
-                          <input type="text" class="form-control form-control-lg mb-1" id="sts"  readonly required>
+                          <input type="text" class="form-control form-control-lg mb-1" id="sts"  formControlName="sts" readonly required>
                         </div>
                         <div class="col-md-2">
                           <label for="pendidikan">Pendi</label>
-                          <input type="text" class="form-control form-control-lg mb-1" id="pendidikan"  readonly required>
+                          <input type="text" class="form-control form-control-lg mb-1" id="pendidikan"  formControlName="pendidikan" readonly required>
                         </div>
                         <div class="col-md-2">
                           <label for="gol">Gol</label>
-                          <input type="text" class="form-control form-control-lg mb-1" id="gol"  readonly required>
+                          <input type="text" class="form-control form-control-lg mb-1" id="gol" formControlName="gol"  readonly required>
                         </div>
                         <div class="col-md-3">
                           <label for="masakerja">Masa Kerja</label>
-
-                              <input type="text" class="form-control form-control-lg  mb-1" aria-label="Small" id="masakerja"  readonly required>
+                              <input type="text" class="form-control form-control-lg  mb-1" aria-label="Small" id="masakerja"
+                                     formControlName="masakerja" readonly required>
                         </div>
 
                       </div>
@@ -124,7 +124,48 @@
                           >
                         </div>
                         <div class="col-md-6">
-
+                          <label for="tjkhusus">Tunjangan Khusus</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tjkhusus"
+                                 placeholder="Tunjangan Khusus"
+                                 id="tjkhusus" readonly
+                          >
+                          <label for="tjtrans">Tunjangan Transport</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tjtrans"
+                                 placeholder="Tunjangan Transport"
+                                 id="tjtrans" readonly
+                          >
+                          <label for="tjprlihan">Tunjangan Peralihan</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tjprlihan"
+                                 placeholder="Tunjangan Peralihan"
+                                 id="tjprlihan" readonly
+                          >
+                          <label for="tjpangan">Tunjangan Pangan</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tjpangan"
+                                 placeholder="Tunjangan Pangan"
+                                 id="tjpangan" readonly
+                          >
+                          <label for="tjpengab">Tunjangan Pengabdian</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tjpengab"
+                                 placeholder="Tunjangan Pengabdian"
+                                 id="tjpengab" readonly
+                          >
+                          <label for="tht">Tunjangan Hari Tua</label>
+                          <input type="text"
+                                 class="form-control form-control-lg mb-1" myCurrencyFormatter
+                                 formControlName="tht"
+                                 placeholder="Tunjangan Hari Tua"
+                                 id="tht" readonly
+                          >
                         </div>
                       </div>
 

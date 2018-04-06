@@ -2,6 +2,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "../node_modules/font-awesome/css/font-awesome.css";
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "assets/css/mycolor";
+@import "assets/css/myeffect";
 html, body {
   margin: 0;
   padding: 0;
@@ -364,7 +366,29 @@ mat-toolbar > mat-form-field {
   flex-grow: 1;
 }
 
+.fa-bigger{
+  font-size: 48px;
+}
+.mat-expansion-panel-body {
+  margin-top: 0 !important;
+  padding: 3px 17px !important;
+  padding-bottom: 15px !important;
+}
+.mat-tooltip {
+  /* your own custom styles here */
+  /* e.g. */
+  color: yellow !important;
+  font-size: 10px !important;
+}
+.mat-tooltip-handset{
+  margin: -5px !important;
+}
 
+.mat-expansion-panel-header-title{
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color:#0d5aa7 !important;
+}
 @media screen and (max-width: 720px) {
   .cmodal-cari{
     bottom: 0px;

@@ -48,7 +48,7 @@ public class Datakaryawan_service {
 
         }
         if (dataPegawai == null) {
-            return new ResponseEntity<>("Data not found", HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(dataPegawai, HttpStatus.OK);
     }

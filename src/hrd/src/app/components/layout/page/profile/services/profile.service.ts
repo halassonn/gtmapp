@@ -11,8 +11,14 @@ export class ProfileService {
   constructor(private _http: HttpService) {}
 
   getAllDataKaryawanBy(by: string, param: string ): Observable<ProfileModel[]> {
-    return this._http.get('api/data-karyawan/by-' + by + '/' + param)
+    return this._http.get('api/data_karyawan/by-' + by + '/' + param)
       .map((response: Response) => response.json() as ProfileModel[])
+      .catch(this.handleError);
+  }
+
+  getDataKaryawan(nik){
+    return this._http.get('api/data_karyawan/by_nik?nik=' + nik)
+      .map((response:Response) => response.json().body)
       .catch(this.handleError);
   }
 

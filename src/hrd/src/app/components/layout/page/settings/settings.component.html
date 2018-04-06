@@ -1,99 +1,113 @@
 <app-loader></app-loader>
 
-<div>
-    <mat-card >
-        <mat-card-content>
-          <h2 class="example-h2">Configuration</h2>
-          <mat-tab-group class="demo-tab-group">
-            <mat-tab label="Data Karyawan">
-              <div class="tab-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-                orci enim rutrum enim, vel tempor sapien arcu a tellus.
-              </div>
-            </mat-tab>
-            <mat-tab label="Gaji">
-                  <mat-tab-group class="demo-tab-group">
-                      <mat-tab label="Gapok">
-                          <div class="tab-content">
-                              <button>Add</button>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-                              Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-                              In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-                              feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-                              orci enim rutrum enim, vel tempor sapien arcu a tellus.
-                            </div>
-                        </mat-tab>
-                        <mat-tab label="Component">
-                            <div class="tab-content">
-                                <mat-list >
-                                  <mat-list-item >Gaji Pokok</mat-list-item>
-                                  <mat-list-item>Tunjangan Istri</mat-list-item>
-                                  <mat-list-item>Tunjangan Anak</mat-list-item>
-                                  <mat-list-item>Tunjangan Jabatan</mat-list-item>
-                                  <mat-list-item>Tunjangan Kesehatan</mat-list-item>
-                                  <mat-list-item>Tunjangan Khusus</mat-list-item>
-                                  <mat-list-item>Tunjangan Transport</mat-list-item>
-                                  <mat-list-item>Tunjangan Pangan</mat-list-item>
-                                  <mat-list-item>Tunjangan Peralihan</mat-list-item>
-                                  <mat-list-item>Tunjangan Pengabdian</mat-list-item>
-                                  <mat-list-item>Tunjangan Hari Tua</mat-list-item>
-                                </mat-list>
-                              </div>
-                              <mat-toolbar>
-                                  <button mat-icon-button >
-                                    <i class="fa fa-lg fa-plus"></i>
-                                  </button>
-                              </mat-toolbar>
-                              
-                          </mat-tab>
-                          <mat-tab label="Potongan">
-                              <div class="tab-content">
-                                  <mat-list>
-                                    <mat-list-item>Iuran THT</mat-list-item>
-                                    <mat-list-item>PPh Pasal 21</mat-list-item>
-                                    <mat-list-item>Pinjaman Karyawan</mat-list-item>
-                                    <mat-list-item>Jamsostek Pensiun</mat-list-item>
-                                    <mat-list-item>Jamsostek Ketenagakerjaan</mat-list-item>
-                                    <mat-list-item>BPJS Kesehatan</mat-list-item>
-                                  </mat-list>
-                                </div>
-                                <mat-toolbar>
-                                    <button mat-icon-button >
-                                      <i class="fa fa-lg fa-plus"></i>
-                                    </button>
-                                </mat-toolbar>
-                          </mat-tab>
-                  </mat-tab-group>
-            </mat-tab>
-            <mat-tab label="Tab 3" disabled>
-              No content  
-            </mat-tab>
-            <mat-tab label="Tab 4">
-              <div class="demo-tab-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-                orci enim rutrum enim, vel tempor sapien arcu a tellus.
-                <br />
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-                orci enim rutrum enim, vel tempor sapien arcu a tellus.
-              </div>  
-            </mat-tab>
-            <mat-tab label="Tab 5">
-              No content  
-            </mat-tab>
-            <mat-tab label="Tab 6">
-              No content  
-            </mat-tab>
-          </mat-tab-group>
-        </mat-card-content>
-      </mat-card>
+
+<div class="pane">
+  <div class="form-dialog" style="width: 420px; margin: auto">
+    <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+      <h5>
+        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;Setting</h5>
+      <span class="toolbar-spacer"></span>
+      <button mat-icon-button="" class="pull-right" (click)="batal('main_setting')">
+        <i class="fa fa-close"></i>
+      </button>
+    </mat-toolbar>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Tunjangan
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+<div id="menu_button">
+  <button class="offset " matTooltip="Kesehatan" (click)="open_form_tjkesehatan()"><i class="fa fa-lg fa-ambulance fa-bigger"></i></button>
+  <button class="offset" matTooltip="Istri / Anak"><i class="fa fa-lg fa-users fa-bigger"></i></button>
+  <button class="offset "><i class="fa fa-lg fa-ambulance fa-bigger"></i></button>
+
 </div>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Data Kantor
+          </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button>HALO</button>
+        <button>HALO</button>
+        <button>HALO</button>
+        <button>HALO</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+
+<!-- modal tj form kesehatan -->
+
+<app-mymodal [(visiblekah)]="open_form_kesehatan" [(mclass)]="classmodal">
+  <div class="form-dialog" style="width: 420px; margin: auto;">
+    <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+      <h5>
+        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;Tunjangan Kesehatan</h5>
+      <span class="toolbar-spacer"></span>
+      <button mat-icon-button="" class="pull-right" (click)="batal()">
+        <i class="fa fa-close"></i>
+      </button>
+    </mat-toolbar>
+<div style=" overflow-y:auto;">
+  <div style="margin: auto">
+    <form>
+      <div class="form-group row m-3">
+        <label for="Tk" class="col-sm-7 col-form-label">Belum Menikah</label>
+        <label for="Tk" class="col-sm-1 col-form-label">:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="Tk" placeholder="{{tjkesehatan.tk}}">
+        </div>
+      </div>
+      <div class="form-group row m-3">
+        <label for="K0" class="col-sm-7 col-form-label">Menikah</label>
+        <label for="Tk" class="col-sm-1 col-form-label">:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="K0" placeholder="{{tjkesehatan.k0}}">
+        </div>
+      </div>
+      <div class="form-group row m-3">
+        <label for="K1" class="col-sm-7 col-form-label">Menikah / anak 1</label>
+        <label for="Tk" class="col-sm-1 col-form-label">:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="k1" placeholder="{{tjkesehatan.k1}}">
+        </div>
+      </div>
+      <div class="form-group row m-3">
+        <label for="K2" class="col-sm-7 col-form-label">Menikah / anak 2</label>
+        <label for="Tk" class="col-sm-1 col-form-label">:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="k2" placeholder="{{tjkesehatan.k2}}">
+        </div>
+      </div>
+      <div class="form-group row m-3">
+        <label for="K3" class="col-sm-7 col-form-label">Menikah / anak 3</label>
+        <label for="Tk" class="col-sm-1 col-form-label">:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control right" id="k3" placeholder="{{tjkesehatan.k3}}">
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<mat-toolbar>
+  <button>OK</button>
+</mat-toolbar>
+  </div>
+
+</app-mymodal>
+
+

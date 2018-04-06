@@ -4,6 +4,7 @@ import {DatakantorModel} from '../../../../../model/datakantor.model';
 import {HttpService} from '../../../../../core/_http/http.service';
 import {Observable} from 'rxjs/Observable';
 
+
 @Injectable()
 export class DatakantorService {
 
@@ -22,12 +23,12 @@ export class DatakantorService {
       return this._http.delete('api/data_kantor?id=' + id);
   }
 
-
   getAllDataKantorBy(by: string, param: string): Observable<DatakantorModel[]> {
     return this._http.get('api/datakantor-by-' + by + '/' + param)
       .map((response: Response) => response.json().body as DatakantorModel[])
       .catch(this.handleError);
   }
+
   getDataKantorBy(by: string, param: string): Observable<DatakantorModel> {
     return this._http.get('api/data_kantor/by_' + by + '?kode=' + param)
       .map((response: Response) => response.json().body as DatakantorModel)

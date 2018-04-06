@@ -2,10 +2,9 @@ import {Injectable} from "@angular/core";
 import {Http, Headers, RequestOptionsArgs, XHRBackend} from "@angular/http";
 import {LoaderService} from "./loader/loader.service";
 import {environment} from '../../../environments/environment';
-
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {EnvConf} from "../../model/env.model";
+import {Response} from '@angular/http';
 import {ReduxRequestOptions} from "./redux-request.options";
 
 @Injectable()

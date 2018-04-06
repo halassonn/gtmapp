@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../core/_http/loader/loader.service';
 import { environment } from '../../../environments';
 import { MatSidenav } from '@angular/material';
+import {LayoutService} from "./page/layout.service";
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,19 @@ import { MatSidenav } from '@angular/material';
 export class LayoutComponent implements OnInit {
   public appVersion;
   url: string = environment.server_host;
-  title = 'Home';
+
+@Input() title = 'Home';
 
 
   @ViewChild('sidenav')
   public mynav: MatSidenav;
-  constructor(private router: Router, private loaderService: LoaderService) {
+  constructor(private router: Router, private loaderService: LoaderService, private layoutservice:LayoutService) {
+
   }
 
   ngOnInit() {
-    console.log('appVersion');
-    console.log(this.url)
+    this.title =this.layoutservice.title;
+    console.log(this.layoutservice.title)
     switch (this.title) {
       case 'Data User': {
         // statements;
@@ -75,67 +78,9 @@ export class LayoutComponent implements OnInit {
   }
 
   open_route(m_url: string) {
-    /*if (m_url === 'users') {
-      this.set_title('Data User');
-      this.router.navigateByUrl('/layout/users');
-    } else if (m_url === 'data_kantor') {
-
-      this.router.navigateByUrl('/layout/datakantor');
-      this.title = 'Data Kantor';
-    } else if (m_url === 'data_karyawan') {
-      this.title = 'Data Karyawan';
-      this.router.navigateByUrl('/layout/karyawan');
-    } else if (m_url === 'data_gaji') {
-      this.title = 'Data Penggajian';
-      this.router.navigateByUrl('/layout/penggajian');
-    } else {
-      this.title = 'Home';
-      this.router.navigateByUrl('/layout');
-    } */
-    switch (m_url) {
-      case 'users': {
-        // statements;
-        this.router.navigateByUrl('/layout/users');
-        this.title = 'Data User';
-        break;
-      }
-      case 'data_kantor': {
-        // statements;
-        this.router.navigateByUrl('/layout/datakantor');
-        this.title = 'Data Kantor';
-        break;
-      }
-      case 'data_karyawan': {
-        // statements;
-        this.router.navigateByUrl('/layout/karyawan');
-        this.title = 'Data Karyawan';
-        break;
-      }
-      case 'data_gaji': {
-        // statements;
-        this.router.navigateByUrl('/layout/penggajian');
-        this.title = 'Data Penggajian';
-        break;
-      }
-      case 'data_cetak': {
-        // statements;
-        this.router.navigateByUrl('/layout/cetak');
-        this.title = 'Cetak Data';
-        break;
-      }
-      case 'setting': {
-        // statements;
-        this.router.navigateByUrl('/layout/setting');
-        this.title = 'Configuration';
-        break;
-      }
-      default : {
-        this.title = 'Home';
-      this.router.navigateByUrl('/layout/home');
-      }
-    }
+   this.layoutservice.open_route(m_url);
+    this.title =this.layoutservice.title;
     this.mynav.close();
-
   }
 
   public set_title(p: string) {

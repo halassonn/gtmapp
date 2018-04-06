@@ -58,9 +58,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     HttpModule
   ],
-  providers: [ElectronService, ProfileService ,MyCurrencyPipe],
+  providers: [ElectronService ,MyCurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

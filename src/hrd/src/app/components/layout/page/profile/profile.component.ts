@@ -353,7 +353,13 @@ num:any;
     console.log(hari + ' Hari ' + weekly + ' Minggu ' + bulan + ' Bulan ' + tahun + ' tahun ');
 
     this.masakerjath = this.numFunction(tahun);
-if (bulan > 0) {
+if (bulan < 0) {
+  this.snackBar.open('Tanggal Masuk Salah', '', this.snackBarErrorConf);
+  this.masakerjabl = '';
+  this.masakerjath = '';
+}else {
+
+
   if (bulan >= 12) {
     console.log('BULAN ' + bulan % 12);
     this.masakerjabl = this.numFunction(bulan % 12);
@@ -362,12 +368,9 @@ if (bulan > 0) {
     this.masakerjath = this.numFunction(tahun - 1);
     this.masakerjabl = this.numFunction(bulan);
   } else {
-
+    this.masakerjath = this.numFunction(tahun);
+    this.masakerjabl = this.numFunction(bulan);
   }
-}else {
-  this.snackBar.open('Tanggal Masuk Salah', '', this.snackBarErrorConf);
-  this.masakerjabl = '';
-  this.masakerjath = '';
 
 }
 
