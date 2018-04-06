@@ -10,11 +10,23 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DataSource } from '@angular/cdk/collections';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ModalService} from "../../../../mymodal/services/modal.service";
+import {style, animate, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-datakantor',
   templateUrl: './datakantor.component.html',
-  styleUrls: ['./datakantor.component.scss']
+  styleUrls: ['./datakantor.component.scss'],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({transform: 'scale3d(.3, .3, .3)'}),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({transform: 'scale3d(.0, .0, .0)'}))
+      ])
+    ])
+  ]
 })
 
 

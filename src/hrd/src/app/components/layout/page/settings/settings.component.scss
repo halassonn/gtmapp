@@ -15,6 +15,10 @@
 }
 .form-dialog{
   background-color: white;
+  border:3px solid #0d5aa7;
+}
+.form-group > label, .form-group > input{
+  font-size: 12px;
 }
 
 // Animate the size, inside
@@ -133,7 +137,8 @@ body {
   font: inherit;
   line-height: 1;
   margin: 0.5em;
-  padding: 1em 2em;
+  padding: 2em 2em;
+  width: 8em;
 }
 
 h1 { font-weight: 400; }

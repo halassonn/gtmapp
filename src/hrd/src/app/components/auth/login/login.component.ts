@@ -6,11 +6,23 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig, MatSnackBarVerticalPosition} from '@angular/material';
 import {Router} from '@angular/router';
 import { environment } from '../../../../environments/environment.prod';
+import {style, animate, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({transform: 'scale3d(.3, .3, .3)'}),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({transform: 'scale3d(.0, .0, .0)'}))
+      ])
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
   auth: AuthModel = new AuthModel();

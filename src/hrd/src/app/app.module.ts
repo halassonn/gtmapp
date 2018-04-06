@@ -29,6 +29,9 @@ import { HttpModule } from '@angular/http';
 import {MyCurrencyPipe} from "./core/pipe/my-currency.pipe";
 
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    AngularFontAwesomeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -53,7 +57,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-
     MymoduleModule,
     LayoutModule,
     FormsModule,

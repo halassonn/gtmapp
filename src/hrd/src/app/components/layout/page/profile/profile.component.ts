@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DataSource } from '@angular/cdk/collections';
 import { DatePipe } from '@angular/common';
+import {style, animate, transition, trigger} from "@angular/animations";
 
 
 
@@ -20,6 +21,17 @@ import { DatePipe } from '@angular/common';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({transform: 'scale3d(.3, .3, .3)'}),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({transform: 'scale3d(.0, .0, .0)'}))
+      ])
+    ])
+  ]
 })
 
 export class ProfileComponent implements OnInit {

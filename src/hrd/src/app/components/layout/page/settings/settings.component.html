@@ -1,8 +1,7 @@
+<div [@dialog]>
 <app-loader></app-loader>
-
-
 <div class="pane">
-  <div class="form-dialog" style="width: 420px; margin: auto">
+  <div *ngIf="!hide_main_setting" class="dialog-form" style="width: 420px; margin: auto">
     <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
       <h5>
         <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;Setting</h5>
@@ -12,37 +11,50 @@
       </button>
     </mat-toolbar>
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Tunjangan
+            Tunjangan Karyawan
           </mat-panel-title>
           <mat-panel-description>
-
+            {{panelOpenState ? 'open' : 'closed'}}
           </mat-panel-description>
         </mat-expansion-panel-header>
 <div id="menu_button">
-  <button class="offset " matTooltip="Kesehatan" (click)="open_form_tjkesehatan()"><i class="fa fa-lg fa-ambulance fa-bigger"></i></button>
-  <button class="offset" matTooltip="Istri / Anak"><i class="fa fa-lg fa-users fa-bigger"></i></button>
-  <button class="offset "><i class="fa fa-lg fa-ambulance fa-bigger"></i></button>
+  <button class="offset " matTooltip="Kesehatan" (click)="open_form('TJKesehatan')">
+    <fa name="ambulance"  size="3x"></fa>
+  </button>
+  <button class="offset" matTooltip="Istri / Anak" (click)="open_form('TJIstriAnak')">
+    <fa name="child"  size="3x"></fa>
+  </button>
+  <button class="offset " matTooltip="Khusus" (click)="open_form('TJKhusus')"><fa name="ticket"  size="3x"></fa></button>
+  <button class="offset " matTooltip="Transport"><fa name="bus"  size="3x"></fa></button>
+  <button class="offset " matTooltip="Pangan"><fa name="cutlery"  size="3x"></fa></button>
+  <button class="offset " matTooltip="Jabatan"><fa name="thumbs-o-up"  size="3x"></fa></button>
+  <button class="offset " matTooltip="THT"><fa name="smile-o" animation="spin" size="3x"> </fa></button>
 
 </div>
 
       </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
+      <mat-expansion-panel (opened)="panelOpenState1 = true"
+                           (closed)="panelOpenState1 = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Data Kantor
           </mat-panel-title>
           <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            {{panelOpenState1 ? 'open' : 'closed'}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <button>HALO</button>
-        <button>HALO</button>
-        <button>HALO</button>
-        <button>HALO</button>
+        <div id="menu_button">
+          <button class="offset " matTooltip="Data Kantor">
+            <fa name="bank"  size="3x"></fa>
+          </button>
+
+
+
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
@@ -52,12 +64,12 @@
 <!-- modal tj form kesehatan -->
 
 <app-mymodal [(visiblekah)]="open_form_kesehatan" [(mclass)]="classmodal">
-  <div class="form-dialog" style="width: 420px; margin: auto;">
+  <div  class="dialog-form" style="width: 420px; margin: auto;">
     <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
       <h5>
-        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;Tunjangan Kesehatan</h5>
+        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;{{title}}</h5>
       <span class="toolbar-spacer"></span>
-      <button mat-icon-button="" class="pull-right" (click)="batal()">
+      <button mat-icon-button="" class="pull-right" (click)="batal('TJKesehatan')">
         <i class="fa fa-close"></i>
       </button>
     </mat-toolbar>
@@ -65,49 +77,157 @@
   <div style="margin: auto">
     <form>
       <div class="form-group row m-3">
-        <label for="Tk" class="col-sm-7 col-form-label">Belum Menikah</label>
-        <label for="Tk" class="col-sm-1 col-form-label">:</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="Tk" placeholder="{{tjkesehatan.tk}}">
+        <label for="Tk" class="col-sm-9 col-form-label">Belum Menikah</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-lg" id="Tk" placeholder="{{tjkesehatan.tk}}">
         </div>
       </div>
       <div class="form-group row m-3">
-        <label for="K0" class="col-sm-7 col-form-label">Menikah</label>
-        <label for="Tk" class="col-sm-1 col-form-label">:</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="K0" placeholder="{{tjkesehatan.k0}}">
+        <label for="K0" class="col-sm-9 col-form-label">Menikah</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-lg" id="K0" placeholder="{{tjkesehatan.k0}}">
         </div>
       </div>
       <div class="form-group row m-3">
-        <label for="K1" class="col-sm-7 col-form-label">Menikah / anak 1</label>
-        <label for="Tk" class="col-sm-1 col-form-label">:</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="k1" placeholder="{{tjkesehatan.k1}}">
+        <label for="K1" class="col-sm-9 col-form-label">Menikah / anak 1</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-lg" id="k1" placeholder="{{tjkesehatan.k1}}">
         </div>
       </div>
       <div class="form-group row m-3">
-        <label for="K2" class="col-sm-7 col-form-label">Menikah / anak 2</label>
-        <label for="Tk" class="col-sm-1 col-form-label">:</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="k2" placeholder="{{tjkesehatan.k2}}">
+        <label for="K2" class="col-sm-9 col-form-label">Menikah / anak 2</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-lg" id="k2" placeholder="{{tjkesehatan.k2}}">
         </div>
       </div>
       <div class="form-group row m-3">
-        <label for="K3" class="col-sm-7 col-form-label">Menikah / anak 3</label>
-        <label for="Tk" class="col-sm-1 col-form-label">:</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control right" id="k3" placeholder="{{tjkesehatan.k3}}">
+        <label for="K3" class="col-sm-9 col-form-label">Menikah / anak 3</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-lg" id="k3" placeholder="{{tjkesehatan.k3}}">
         </div>
       </div>
     </form>
   </div>
 
 </div>
+
 <mat-toolbar>
+  <span class="toolbar-spacer"></span>
   <button>OK</button>
 </mat-toolbar>
+
   </div>
 
 </app-mymodal>
 
+<!-- modal tujangan istri/anak -->
 
+<app-mymodal [(visiblekah)]="open_form_istri_anak" [(mclass)]="classmodal">
+  <div class="dialog-form" style="width: 420px; margin: auto;">
+    <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+      <h5>
+        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;{{title}}</h5>
+      <span class="toolbar-spacer"></span>
+      <button mat-icon-button="" class="pull-right" (click)="batal('TJIstriAnak')">
+        <i class="fa fa-close"></i>
+      </button>
+    </mat-toolbar>
+    <div style="  ;overflow-y: auto">
+      <div style="margin: auto">
+        <form>
+          <div class="form-group row m-3">
+            <label for="tjistri" class="col-sm-9 col-form-label">Tunjangan Istri</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control form-control-lg" id="tjistri" placeholder="{{tjistrianak.tjistri}}">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="tjanak" class="col-sm-9 col-form-label">Tunjangan Anak</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control form-control-lg" id="tjanak" placeholder="{{tjistrianak.tjanak}}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <mat-toolbar>
+      <span class="toolbar-spacer"></span>
+      <button>OK</button>
+    </mat-toolbar>
+    </div>
+
+</app-mymodal>
+
+<!-- modal tj khusus -->
+<app-mymodal [(visiblekah)]="open_form_khusus" [(mclass)]="classmodal">
+  <div class="dialog-form" style="width: 420px; margin: auto;">
+    <mat-toolbar color="primary" style="height: 32px; padding-left: 2px; padding-right: 2px">
+      <h5>
+        <i class=" ml-2 mr-1 fa fa-cog"></i>&nbsp;{{title}}</h5>
+      <span class="toolbar-spacer"></span>
+      <button mat-icon-button="" class="pull-right" (click)="batal('TJKhusus')">
+        <i class="fa fa-close"></i>
+      </button>
+    </mat-toolbar>
+    <div style="  ;overflow-y: auto">
+      <div style="margin: auto">
+        <form>
+          <div class="form-group row m-3">
+            <label for="I" class="col-sm-7 col-form-label">Kolom I</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="I" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="II" class="col-sm-7 col-form-label">Kolom II</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="II" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="III" class="col-sm-7 col-form-label">Kolom III</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="III" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="IV" class="col-sm-7 col-form-label">Kolom IV</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="IV" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="V" class="col-sm-7 col-form-label">Kolom V</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="V" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="VI" class="col-sm-7 col-form-label">Kolom VI</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="VI" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="VII" class="col-sm-7 col-form-label">Kolom VII</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="VII" placeholder="0">
+            </div>
+          </div>
+          <div class="form-group row m-3">
+            <label for="VIII" class="col-sm-7 col-form-label">Kolom VIII</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control form-control-lg" id="VIII" placeholder="0">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <mat-toolbar>
+      <span class="toolbar-spacer"></span>
+      <button>OK</button>
+    </mat-toolbar>
+  </div>
+
+</app-mymodal>
+</div>

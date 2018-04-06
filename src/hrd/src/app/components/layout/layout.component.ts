@@ -4,11 +4,23 @@ import { LoaderService } from '../../core/_http/loader/loader.service';
 import { environment } from '../../../environments';
 import { MatSidenav } from '@angular/material';
 import {LayoutService} from "./page/layout.service";
+import {style, animate, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-home',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({transform: 'scale3d(.3, .3, .3)'}),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({transform: 'scale3d(.0, .0, .0)'}))
+      ])
+    ])
+  ]
 })
 export class LayoutComponent implements OnInit {
   public appVersion;
